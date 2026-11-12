@@ -1,0 +1,137 @@
+{
+  "g1": {
+    "namespaces": [
+      {
+        "id": "trade",
+        "name": "贸易服务"
+      }
+    ],
+    "objects": [
+      {
+        "id": "ds-company",
+        "namespace": "trade",
+        "name": "企业资料",
+        "type": "table"
+      },
+      {
+        "id": "view-market",
+        "namespace": "trade",
+        "name": "市场名录",
+        "type": "view"
+      },
+      {
+        "id": "view-network",
+        "namespace": "trade",
+        "name": "关联资源",
+        "type": "view"
+      }
+    ],
+    "fields": {
+      "ds-company": [
+        {
+          "id": "f-identity",
+          "name": "企业编号",
+          "type": "text"
+        },
+        {
+          "id": "f-name",
+          "name": "企业名称",
+          "type": "text"
+        }
+      ],
+      "view-market": [
+        {
+          "id": "f-market",
+          "name": "市场",
+          "type": "text"
+        }
+      ],
+      "view-network": [
+        {
+          "id": "f-ref",
+          "name": "合作方",
+          "type": "text"
+        }
+      ]
+    },
+    "dependencies": {
+      "ds-company": [],
+      "view-market": [
+        "ds-company",
+        "view-network"
+      ],
+      "view-network": [
+        "view-market",
+        "outside-secret"
+      ]
+    }
+  },
+  "g2": {
+    "namespaces": [
+      {
+        "id": "trade",
+        "name": "贸易服务"
+      }
+    ],
+    "objects": [
+      {
+        "id": "ds-company",
+        "namespace": "trade",
+        "name": "企业档案",
+        "type": "table"
+      },
+      {
+        "id": "view-market",
+        "namespace": "trade",
+        "name": "市场名录",
+        "type": "view"
+      }
+    ],
+    "fields": {
+      "ds-company": [
+        {
+          "id": "f-name",
+          "name": "注册名称",
+          "type": "text"
+        },
+        {
+          "id": "f-identity",
+          "name": "企业编号",
+          "type": "text"
+        }
+      ],
+      "view-market": [
+        {
+          "id": "f-market",
+          "name": "市场",
+          "type": "text"
+        }
+      ]
+    },
+    "dependencies": {
+      "ds-company": [],
+      "view-market": [
+        "ds-company",
+        "outside-secret"
+      ]
+    }
+  },
+  "scopes": {
+    "wide": {
+      "version": "scope-1",
+      "objects": [
+        "ds-company",
+        "view-market",
+        "view-network"
+      ],
+      "listing_complete": true
+    },
+    "limited": {
+      "version": "scope-2",
+      "objects": [
+        "view-market"
+      ],
+      "listing_complete": false
+    }
+  }
+}
